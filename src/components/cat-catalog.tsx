@@ -386,12 +386,12 @@ export function CatCatalog() {
             </TabsList>
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button className="w-full sm:w-auto">
+                <Button>
                   <PlusIcon className="w-4 h-4 mr-2" />
                   Add New Cat
                 </Button>
               </AlertDialogTrigger>
-              <AlertDialogContent className="w-[95vw] max-w-[425px]">
+              <AlertDialogContent className="sm:max-w-[425px]">
                 <AlertDialogHeader>
                   <AlertDialogTitle>Add New Cat</AlertDialogTitle>
                   <AlertDialogDescription>
@@ -400,8 +400,88 @@ export function CatCatalog() {
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <div className="grid gap-4 py-4">
-                  {/* Form fields remain the same */}
-                  {/* ... */}
+                  <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="name" className="text-right">
+                      Name
+                    </Label>
+                    <Input
+                      id="name"
+                      className="col-span-3"
+                      onChange={(e) =>
+                        setEditingCat({ ...editingCat, name: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="description" className="text-right">
+                      Description
+                    </Label>
+                    <Textarea
+                      id="description"
+                      className="col-span-3"
+                      onChange={(e) =>
+                        setEditingCat({
+                          ...editingCat,
+                          description: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="breed" className="text-right">
+                      Breed
+                    </Label>
+                    <Input
+                      id="breed"
+                      className="col-span-3"
+                      onChange={(e) =>
+                        setEditingCat({ ...editingCat, breed: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="origin" className="text-right">
+                      Origin
+                    </Label>
+                    <Input
+                      id="origin"
+                      className="col-span-3"
+                      placeholder="Country or region of origin"
+                      onChange={(e) =>
+                        setEditingCat({
+                          ...editingCat,
+                          origin: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="lifespan" className="text-right">
+                      Lifespan
+                    </Label>
+                    <Input
+                      id="lifespan"
+                      className="col-span-3"
+                      placeholder="Average lifespan (e.g., 12-15 years)"
+                      onChange={(e) =>
+                        setEditingCat({
+                          ...editingCat,
+                          life_span: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="favorite" className="text-right">
+                      Favorite
+                    </Label>
+                    <Checkbox
+                      id="favorite"
+                      onCheckedChange={(checked) =>
+                        setEditingCat({ ...editingCat, favorite: checked })
+                      }
+                    />
+                  </div>
                 </div>
                 <AlertDialogFooter>
                   <AlertDialogCancel>Cancel</AlertDialogCancel>
@@ -411,6 +491,7 @@ export function CatCatalog() {
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
+
           </div>
           <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
             <Select value={selectedBreed} onValueChange={handleFilterByBreed}>
